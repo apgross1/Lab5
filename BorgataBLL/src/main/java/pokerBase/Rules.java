@@ -7,7 +7,7 @@ import enums.eGame;
 import enums.eRank;
 import enums.eSuit;
 
-public class Rule {
+public class Rules {
 
 	private int MaxNumberOfPlayers;
 	private int NumberOfCards;
@@ -15,8 +15,8 @@ public class Rule {
 	private int CommunityCards;
 	private ArrayList<CardDomainModel> RuleCards = new ArrayList<CardDomainModel>();
 
-	public Rule(eGame gme) {
-		switch (gme) {
+	public Rules(pokerEnums.eGame eGame) {
+		switch (eGame) {
 		case FiveStud: {
 			this.MaxNumberOfPlayers = 4;
 			this.NumberOfCards = 5;

@@ -9,7 +9,7 @@
    <top>
       <MenuBar prefHeight="35.0" prefWidth="150.0">
         <menus>
-          <Menu mnemonicParsing="false" text="Game">
+          <Menu fx:id="mnuGame" mnemonicParsing="false" text="Game">
             <items>
                   <RadioMenuItem mnemonicParsing="false" text="5 Card Joker Poker">
                      <toggleGroup>

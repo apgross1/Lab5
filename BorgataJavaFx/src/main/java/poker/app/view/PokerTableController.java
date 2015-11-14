@@ -36,7 +36,7 @@ import pokerBase.GamePlay;
 import pokerBase.GamePlayPlayerHand;
 import pokerBase.Hand;
 import pokerBase.Player;
-import pokerBase.Rule;
+import pokerBase.Rules;
 
 public class PokerTableController {
 
@@ -175,9 +175,12 @@ public class PokerTableController {
 		
 		// Clear all players hands
 		hBoxP1Cards.getChildren().clear();
+		//hBoxP2Cards.getChildren().clear();
+		//hBoxP3Cards.getChildren().clear();
+		//hBoxP4Cards.getChildren().clear();
 		
 		// Get the Rule, start the Game
-		Rule rle = new Rule(eGame.FiveStud);
+		Rules rle = new Rules(pokerEnums.eGame.getValue(mainApp.getiGameType()));
 		gme = new GamePlay(rle);
 
 		// Add the seated players to the game

@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import com.sun.javafx.css.Rule;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -29,7 +31,9 @@ import javafx.stage.Stage;
 import poker.app.view.PokerTableController;
 import poker.app.view.RootLayoutController;
 import pokerBase.Player;
+import pokerBase.Rules;
 import pokerBase.Table;
+import pokerEnums.eGame;
 
 public class MainApp extends Application {
 
@@ -139,6 +143,7 @@ public class MainApp extends Application {
 
 	public void setiGameType(int iGameType) {
 		this.iGameType = iGameType;
+		
 	}
 	
 	

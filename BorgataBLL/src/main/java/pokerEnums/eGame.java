@@ -22,4 +22,13 @@ public enum eGame {
 	public int getGame(){
 		return gameNbr;
 	}
+	
+	public static eGame getValue(int value) {
+		  for(eGame e: eGame.values()) {
+		    if(e.gameNbr == value) {
+		      return e;
+		    }
+		  }
+		  return null;// not found
+		}
 }

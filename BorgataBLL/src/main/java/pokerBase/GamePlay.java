@@ -18,7 +18,7 @@ public class GamePlay extends GamePlayDomainModel {
 	
 	private Deck GameDeck = null;
 	
-	public GamePlay(Rule rle)
+	public GamePlay(Rules rle)
 	{
 		this.setGameID(UUID.randomUUID());
 		this.setNbrOfCards(rle.GetNumberOfCards());
