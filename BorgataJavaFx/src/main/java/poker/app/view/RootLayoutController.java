@@ -13,6 +13,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.RadioMenuItem;
 import javafx.stage.FileChooser;
 import poker.app.MainApp;
 import pokerEnums.eGame;
@@ -32,16 +33,53 @@ public class RootLayoutController implements Initializable {
     @FXML
     private Menu mnuGame;
     
+    @FXML
+    private RadioMenuItem FiveCard;
+    @FXML
+    private RadioMenuItem FiveCardOneJoker;
+    @FXML
+    private RadioMenuItem FiveCardTwoJoker;
+    @FXML
+    private RadioMenuItem TexasHoldEm;
+    @FXML
+    private RadioMenuItem Omaha;
+    @FXML
+    private RadioMenuItem Close;
     
-	@Override
+    @FXML
+	private void handleGame() throws Exception {
+    	if (FiveCard.isSelected()) {
+    		mainApp.setiGameType(1);
+
+    	}
+    	else if (FiveCardOneJoker.isSelected()) {
+    		mainApp.setiGameType(2);
+    		
+    	}
+    	else if (FiveCardTwoJoker.isSelected()) {
+    		mainApp.setiGameType(3);
+    		
+    	}
+    	else if (TexasHoldEm.isSelected()) {
+    		mainApp.setiGameType(4);
+    		
+    	}
+    	else if (Omaha.isSelected()) {
+    		mainApp.setiGameType(5);
+    		
+    	}
+    }
+    
+    @Override
 	public void initialize(URL location, ResourceBundle resources) {
 
-	 
-		CheckMenuItem item1 = new CheckMenuItem("5 card stud");
+		
+		/*CheckMenuItem item1 = new CheckMenuItem("5 card stud");
         item1.selectedProperty().addListener(new ChangeListener(){
             @Override
             public void changed(ObservableValue arg0, Object arg1, Object arg2) {
-               mainApp.setiGameType(eGame.FiveStud.getGame());              
+               mainApp.setiGameType(eGame.FiveStud.getGame());
+               System.out.println(mainApp.getiGameType());
             }            
           });
 		

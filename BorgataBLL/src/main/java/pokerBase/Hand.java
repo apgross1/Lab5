@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.UUID;
+import pokerBase.GamePlayPlayerHand;
 
 import javax.xml.bind.annotation.XmlElement;
 
@@ -14,10 +15,12 @@ import enums.eHandStrength;
 import enums.eRank;
 
 public class Hand extends HandDomainModel {
-
+	private ArrayList<Card> communityCards = new ArrayList<Card>(); 
+	private GamePlayPlayerHand playerHand;
+	
 	public Hand()
 	{
-		
+		playerHand = new GamePlayPlayerHand();
 	}
 	public void  AddCardToHand(Card c)
 	{
@@ -34,9 +37,40 @@ public class Hand extends HandDomainModel {
 	}
 	
 	public Hand(Deck d) {
+		playerHand = new GamePlayPlayerHand();
 		ArrayList<CardDomainModel> Import = new ArrayList<CardDomainModel>();
-		for (int x = 0; x < 5; x++) {
-			Import.add(d.drawFromDeck());
+		if (playerHand.getGame().getGame() == pokerEnums.eGame.FiveStud || 
+			playerHand.getGame().getGame() == pokerEnums.eGame.FiveStudOneJoker ||
+			playerHand.getGame().getGame() == pokerEnums.eGame.FiveStudTwoJoker) {
+			for (int x = 0; x < 5; x++) {
+				Import.add(d.drawFromDeck());
+			}
+		}
+		else if (playerHand.getGame().getGame() == pokerEnums.eGame.TexasHoldEm) {
+			for (int x = 0; x < 2; x++) {
+				Import.add(d.drawFromDeck());
+			}
+			for (int i = 0; i < 4; i++) {
+				if (i==0) {
+					d.drawFromDeck();
+				}
+				else
+					communityCards.add(d.drawFromDeck());
+			}
+		}
+		
+		else if (playerHand.getGame().getGame() == pokerEnums.eGame.Omaha) {
+			for (int x = 0; x < 4; x++) {
+				Import.add(d.drawFromDeck());
+			}
+			
+			for (int i = 0; i < 4; i++) {
+				if (i==0) {
+					d.drawFromDeck();
+				}
+				else
+					communityCards.add(d.drawFromDeck());
+			}
 		}
 		setCardsInHand(Import);
 	}
@@ -52,7 +86,9 @@ public class Hand extends HandDomainModel {
 		return h;
 	}
 
-
+	
+	
+	
 	public void EvalHand() {
 		// Evaluates if the hand is a flush and/or straight then figures out
 		// the hand's strength attributes

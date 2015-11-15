@@ -14,7 +14,8 @@ public class Rules {
 	private int NumberOfJokers;
 	private int CommunityCards;
 	private ArrayList<CardDomainModel> RuleCards = new ArrayList<CardDomainModel>();
-
+	private pokerEnums.eGame game;
+	
 	public Rules(pokerEnums.eGame eGame) {
 		switch (eGame) {
 		case FiveStud: {
@@ -22,6 +23,7 @@ public class Rules {
 			this.NumberOfCards = 5;
 			this.NumberOfJokers = 0;
 			this.CommunityCards = 0;
+			this.game = pokerEnums.eGame.FiveStud;
 			break;
 		}
 		case FiveStudOneJoker: {
@@ -29,6 +31,7 @@ public class Rules {
 			this.NumberOfCards = 5;
 			this.NumberOfJokers = 1;
 			this.CommunityCards = 0;
+			this.game = pokerEnums.eGame.FiveStudOneJoker;
 			break;
 		}
 		case FiveStudTwoJoker: {
@@ -36,6 +39,7 @@ public class Rules {
 			this.NumberOfCards = 5;
 			this.NumberOfJokers = 2;
 			this.CommunityCards = 0;
+			this.game = pokerEnums.eGame.FiveStudTwoJoker;
 			break;
 		}
 		case TexasHoldEm: {
@@ -43,6 +47,7 @@ public class Rules {
 			this.NumberOfCards = 2;
 			this.NumberOfJokers = 0;
 			this.CommunityCards = 5;
+			this.game = pokerEnums.eGame.TexasHoldEm;
 			break;
 		}
 		case Omaha: {
@@ -50,6 +55,7 @@ public class Rules {
 			this.NumberOfCards = 4;
 			this.NumberOfJokers = 0;
 			this.CommunityCards = 5;
+			this.game = pokerEnums.eGame.Omaha;
 			break;
 		}
 		case SevenDraw: {
@@ -108,5 +114,9 @@ public class Rules {
 	public ArrayList<CardDomainModel> GetRuleCards()
 	{
 		return this.RuleCards;
+	}
+	
+	public pokerEnums.eGame getGame() {
+		return this.game;
 	}
 }

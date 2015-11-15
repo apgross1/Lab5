@@ -2,10 +2,9 @@ package pokerBase;
 
 public class GamePlayPlayerHand {
 
-	private GamePlay game = null;
+	private GamePlay game1 = null;
 	private Player player = null;
 	private Hand hand = null;
-	
 	private Player WinningPlayer = null;
 	
 	public GamePlayPlayerHand() {
@@ -13,11 +12,11 @@ public class GamePlayPlayerHand {
 	}
 
 	public GamePlay getGame() {
-		return game;
+		return game1;
 	}
 
 	public void setGame(GamePlay game) {
-		this.game = game;
+		this.game1 = game;
 	}
 
 	public Player getPlayer() {

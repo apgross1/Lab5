@@ -16,6 +16,7 @@ public class GamePlay extends GamePlayDomainModel {
 	private ArrayList<Player> GamePlayers = new ArrayList<Player>();
 	private ArrayList<GamePlayPlayerHand> GamePlayerHand = new ArrayList<GamePlayPlayerHand>();
 	
+	private pokerEnums.eGame game;
 	private Deck GameDeck = null;
 	
 	public GamePlay(Rules rle)
@@ -25,6 +26,7 @@ public class GamePlay extends GamePlayDomainModel {
 		this.setMaxNbrOfPlayers(rle.GetMaxNumberOfPlayers());
 		this.setNbrOfJokers(rle.GetNumberOfJokers());
 		this.setWildCards(rle.GetRuleCards());
+		this.game = rle.getGame();
 	}
 
 	public ArrayList<Player> getGamePlayers() {
@@ -67,5 +69,7 @@ public class GamePlay extends GamePlayDomainModel {
 		return GPPHReturn;
 	}
 	
-	
+	public pokerEnums.eGame getGame() {
+		return this.game;
+	}
 }
